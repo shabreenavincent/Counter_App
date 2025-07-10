@@ -33,7 +33,89 @@ Change the text color if the user exceeds the limit.
 
 Add emojis or icons using Unicode for visual feedback.
 ## HTML Code:
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Character Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Write your message</h2>
+    <textarea id="message" maxlength="100" placeholder="Type something..."></textarea>
+    <p id="charCount">0 / 100 characters</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+```
 ## CSS Code:
+```
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  resize: none;
+}
+
+#charCount {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease;
+}
+```
+## Js code:
+```
+const textarea = document.getElementById("message");
+const charCount = document.getElementById("charCount");
+const maxLimit = 100;
+
+textarea.addEventListener("input", () => {
+  const currentLength = textarea.value.length;
+  charCount.textContent = `${currentLength} / ${maxLimit} characters`;
+
+  if (currentLength > maxLimit) {
+    charCount.style.color = "red";
+  } else {
+    charCount.style.color = currentLength === maxLimit ? "orange" : "#333";
+  }
+});
+```
 ## Output:
 
 ## Result:
